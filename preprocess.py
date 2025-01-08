@@ -67,6 +67,7 @@ def split_fastq(fastq_file, output_dir, patient_ids):
       sequences_per_patient = total_sequences // len(patient_ids)
       remaining_sequences = total_sequences % len(patient_ids)
 
+      # The splitting of the FASTQ is simulated for demonstration. Not based on real patient sequences.
       # Reset file pointer
       with open(fastq_file, "r") as file:
           for i, patient_id in enumerate(patient_ids):
