@@ -1,5 +1,17 @@
 # Whole Genome Sequencing Data Workflow
 
+This repository contains scripts for simulating a basic genomic data workflow. **It is crucial to understand that all data used in this repository, including the FASTQ files and clinical data, are either artifically generated or modified for testing and educational purposes only.** They do not represent any real patient or biological data.
+
+## Purpose
+
+This repository demonstrates a simplified data workflow involving:
+
+1.  **Preprocessing:** Splitting a set of FASTQ files based on simulated patient identifiers derived from a downsampled clinical data file.
+2.  **Archiving:** Zipping the split FASTQ files for easy storage and transfer.
+
+This workflow can serve as a template for developing and testing more complex bioinformatics pipelines.
+
+## Repository Structure
 *   `config.ini`: Configuration file containing file paths, parameters, and other settings.
 *   `data/`: A folder containing the **fake** clinical data (`sampled_clinical_data.tsv`) and **public** FASTQ files (`2A1_CGATGT_L001_R1_001.fastq`, `2A1_CGATGT_L001_R2_001.fastq`). These files are from [GenomeInABottle]([url](https://github.com/genome-in-a-bottle/giab_data_indexes)).
 *   `preprocess.py`: Python script for preprocessing and splitting the FASTQ files based on patient IDs.
