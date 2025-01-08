@@ -12,7 +12,7 @@ This repository demonstrates a simplified data workflow involving:
 This workflow can serve as a template for developing and testing more complex bioinformatics pipelines.
 ## Repository Structure
 *   `config.ini`: Configuration file containing file paths, parameters, and other settings.
-*   `data/`: A folder containing the **fake** clinical data (`sampled_clinical_data.tsv`) and **public** FASTQ files (`2A1_CGATGT_L001_R1_001.fastq`, `2A1_CGATGT_L001_R2_001.fastq`). These files are from [GenomeInABottle]([url](https://github.com/genome-in-a-bottle/giab_data_indexes)).
+*   `data/`: A folder containing the **fake** clinical data (`sampled_clinical_data.tsv`) and **public** FASTQ files (`2A1_CGATGT_L001_R1_001.fastq`, `2A1_CGATGT_L001_R2_001.fastq`). These files are from [GenomeInABottle](https://github.com/genome-in-a-bottle/giab_data_indexes).
 *   `preprocess.py`: Python script for preprocessing and splitting the FASTQ files based on patient IDs.
 *   `zip.py`: Python script for zipping the split FASTQ files.
 *   `README.md`: This file, providing documentation for the repository.
