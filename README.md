@@ -11,6 +11,7 @@ This repository demonstrates a simplified data workflow involving:
 
 This workflow can serve as a template for developing and testing more complex bioinformatics pipelines.
 
+.
 ├── config.ini
 ├── data/
 │ ├── sampled_clinical_data.tsv
