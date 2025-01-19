@@ -33,6 +33,7 @@ This workflow serves as a template for developing and testing more complex bioin
     *   `output_directory`: Directory where split FASTQ files will be created.
     *   `clinical_sample_size`: Number of samples from clinical data to downsample to.
     *   `target_file_size_gb`: Target size of the split FASTQ files in gigabytes.
+      
 3.  **Run the Workflow Using Main Class:**
     ```bash
     python main.py
