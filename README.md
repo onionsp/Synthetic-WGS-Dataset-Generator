@@ -1,6 +1,6 @@
 # Whole Genome Sequencing Data Workflow
 
-This repository contains scripts for simulating a basic genomic data workflow. **It is crucial to understand that all data used in this repository, including the FASTQ files and clinical data, are either artifically generated or modified for testing and educational purposes only.** They do not represent any real patient or biological data.
+This repository contains scripts for simulating a basic genomic data workflow. **All data used in this repository, including the FASTQ files and clinical data, are either artifically generated or modified for testing and educational purposes only.** They do not represent any real patient or biological data.
 
 ## Purpose
 
