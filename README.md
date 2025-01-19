@@ -14,7 +14,6 @@ This workflow serves as a template for developing and testing more complex bioin
 ## Repository Structure
 
 *   `config.ini`: Configuration file containing file paths, parameters, and other settings.
-*   `data/`: A folder containing the **fake** clinical data (`sampled_clinical_data.tsv`) and **public** FASTQ files (`2A1_CGATGT_L001_R1_001.fastq`, `2A1_CGATGT_L001_R2_001.fastq`). These files are from [GenomeInABottle](https://github.com/genome-in-a-bottle/giab_data_indexes).
 *   `preprocess.py`: Python script for preprocessing and splitting the FASTQ files based on patient IDs. The splitting is now done by target file size in gigabytes using random sampling.
 *   `zip.py`: Python script for zipping the split FASTQ files.
 *   `main.py`: Python script that executes both `preprocess.py` and `zip.py` with one call.
@@ -27,7 +26,7 @@ This workflow serves as a template for developing and testing more complex bioin
     git clone <repository_url>
     cd <repository_name>
     ```
-2.  **Configuration:** Adjust the `config.ini` file according to your desired paths and parameters of your own .fastq and .tsv files.
+2.  **Configuration:** Adjust the `config.ini` file according to your desired paths and parameters of your own .fastq and .tsv files. **Clinical data and fastq files will need to be downloaded from public sources.**
     *   `clinical_data_path`: Path to the clinical data TSV file.
     *   `fastq_r1_path`: Path to the R1 FASTQ file.
     *   `fastq_r2_path`: Path to the R2 FASTQ file.
