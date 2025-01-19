@@ -40,16 +40,6 @@ This workflow serves as a template for developing and testing more complex bioin
     ```
     This will create the split FASTQ files in the specified output directory, with each file approximately the specified size. The sequences are randomly sampled from the original fastq file.  The split FASTQ files are then zipped into `r1_fastq_files.zip` and `r2_fastq_files.zip`.
 
-## Key Concepts
-
-*   **Simulated Data:** This repository utilizes **artificial data** for all genomic and clinical files. This data is not real and serves as a demo of a data workflow. **No real patient data or biological sequences are used in this project.**
-*   **Configuration:** The use of a configuration file (`config.ini`) allows for easy customization and portability.
-*   **Modularity:** The code is structured into functions and modules, making it more readable, maintainable, and reusable.
-*   **Error Handling:** Includes mechanisms for error handling to prevent unexpected program termination and provide useful feedback.
-*   **Logging:** Uses logging to provide information during execution, aiding in debugging and workflow monitoring.
-*   **File Size Splitting:** The FASTQ files are split based on a target file size.
-*   **Random Sampling:** The sequences are randomly sampled from the original fastq file.
-
 ## Important Note on Data Privacy
 
 **The data provided in this repository is synthetic and does not represent any actual biological or personal data. It is solely intended for educational purposes and software development. No sensitive information or personally identifiable data is involved in this project.**
