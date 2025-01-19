@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import configparser
 import logging
+import random
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -50,42 +51,54 @@ def get_patient_ids(config):
         logging.error(f"An unexpected error occurred: {e}")
         exit(1)
 
-def split_fastq(fastq_file, output_dir, patient_ids):
+def split_fastq(fastq_file, output_dir, patient_ids, target_file_size_gb):
     """
-    Splits a FASTQ file into smaller files, one for each patient ID.
-
+    Splits a FASTQ file into smaller files, one for each patient ID, with target file size using random sampling.
+    
     Args:
         fastq_file (str): Path to the input FASTQ file.
         output_dir (str): Directory to save the split FASTQ files.
         patient_ids (list): List of patient IDs.
+        target_file_size_gb (float): Target size for each output file in gigabytes.
     """
     try:
-      logging.info(f"Splitting FASTQ file: {fastq_file}")
-      with open(fastq_file, "r") as file:
-          total_sequences = sum(1 for _ in file) // 4  # Each sequence is 4 lines
+        logging.info(f"Splitting FASTQ file: {fastq_file}")
+        target_file_size_bytes = target_file_size_gb * 1024 * 1024 * 1024  # Convert GB to bytes
 
-      sequences_per_patient = total_sequences // len(patient_ids)
-      remaining_sequences = total_sequences % len(patient_ids)
+        sequences = []
+        with open(fastq_file, "r") as file:
+            while True:
+                try:
+                    sequence = [next(file) for _ in range(4)]
+                    sequences.append(sequence)
+                except StopIteration:
+                   break  #stop reading from file
 
-      # The splitting of the FASTQ is simulated for demonstration. Not based on real patient sequences.
-      # Reset file pointer
-      with open(fastq_file, "r") as file:
-          for i, patient_id in enumerate(patient_ids):
-                output_file = os.path.join(output_dir, f"{patient_id}_{'R1' if 'R1' in fastq_file else 'R2'}.fastq")
-                with open(output_file, "w") as out:
-                    # Allocate additional sequence if there are remainders
-                    num_sequences = sequences_per_patient + (1 if i < remaining_sequences else 0)
-                    for _ in range(num_sequences):
-                        for _ in range(4):  # Each sequence has 4 lines
-                            out.write(next(file))
+        total_sequences = len(sequences)
 
-      logging.info(f"Successfully split {fastq_file} into per-patient files.")
+        for patient_id in patient_ids:
+            output_file = os.path.join(output_dir, f"{patient_id}_{'R1' if 'R1' in fastq_file else 'R2'}.fastq")
+            
+            current_file_size = 0
+            with open(output_file, "w") as out:
+              while current_file_size < target_file_size_bytes and sequences:
+                  random_index = random.randint(0, len(sequences) - 1)
+                  sampled_sequence = sequences[random_index]
+
+                  # Write the sequence to the output file and update the current file size
+                  for line in sampled_sequence:
+                      out.write(line)
+                      current_file_size += len(line.encode('utf-8'))
+
+        logging.info(f"Successfully split {fastq_file} into per-patient files using random sampling.")
+
     except FileNotFoundError:
           logging.error(f"Error: FASTQ file not found at {fastq_file}")
           exit(1)
     except Exception as e:
         logging.error(f"An error occurred while splitting {fastq_file}: {e}")
         exit(1)
+
 
 if __name__ == "__main__":
     config = load_config()
@@ -94,10 +107,11 @@ if __name__ == "__main__":
     fastq_r1 = config['Paths']['fastq_r1_path']
     fastq_r2 = config['Paths']['fastq_r2_path']
     output_dir = config['Paths']['output_directory']
+    target_size = float(config['Parameters']['target_file_size_gb']) # get target file size
     
     # Create output directory if it does not exist
     os.makedirs(output_dir, exist_ok=True)
 
-    split_fastq(fastq_r1, output_dir, patient_ids)
-    split_fastq(fastq_r2, output_dir, patient_ids)
+    split_fastq(fastq_r1, output_dir, patient_ids, target_size)
+    split_fastq(fastq_r2, output_dir, patient_ids, target_size)
     logging.info("FASTQ files have been successfully split and saved!")
