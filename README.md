@@ -43,3 +43,42 @@ This workflow serves as a template for developing and testing more complex bioin
 ## Important Note on Data Privacy
 
 **The data provided in this repository is synthetic and does not represent any actual biological or personal data. It is solely intended for educational purposes and software development. No sensitive information or personally identifiable data is involved in this project.**
+
+## Data Transfer Agreement
+
+1. **Purpose of the Agreement** (Please select one):  
+
+    A. Research purposes 
+
+    B. Others: **[Specify]** 
+
+2. **Description of the Data:**  
+
+    The dataset utilized in this project is **synthetically** generated, with individual data points retrieved programmatically using Python scripts. Including the patientID and the sampleID that is in the clinical dataset. 
+
+    The clinical dataset, comprising patient-related information which includes; Mutation Count, Diagnosis Age, Sex, Ethnicity Category, Sample Type, country, Days to Last Followup, Location, Neoplasm Disease Stage American Joint Committee on Cancer Code, Sample Class, 
+    Smoker status, TMB (nonsynonymous), Tumor Grade, Tumor Other Histologic Subtype, has been sourced from CBioPortal. Aside from these data, which includes; patientid and sampleid has been synthetically generated using Python scripts. 
+
+    The FASTQ files included in the dataset are derived from a single FASTQ file obtained from the Genome in a Bottle project (NCBI). This original file has been partitioned into 100 smaller segments for processing purposes. 
+
+3. **References of data:** 
+
+    CBioPortal, the code randomly picks 100 data from this dataset. The code then proceeds to add PatientID and SampleID  - https://www.cbioportal.org/study/clinicalData?id=paad_qcmg_uq_2016  
+
+    Genome in a bottle (NCBI) - https://ftp.ncbi.nlm.nih.gov/ReferenceSamples/giab/data_indexes/AshkenazimTrio/sequence.index.AJtrio_Illumina300X_wgs_07292015_updated  
+
+    Code to generate final dataset- https://github.com/onionsp/Synthetic-WGS-Dataset-Generator  
+
+ 
+
+4. **Terms and conditions:** 
+
+    **Usage Restrictions:** Data Recipient agrees to not Use or Disclose the Data Set (or components) for any purpose other than as described for the Research Project or as Required by Law. 
+
+    **Confidentiality:** Data Recipient agrees to ensure that any agent, including a subcontractor, to whom it provides the Data Set, agrees to the same restrictions and conditions that apply through this Agreement to the Data Recipient with respect to such information. 
+
+    **Compliance:** Data Recipient agrees not to contact any individuals from or about whom the data apply, and for Limited Data Sets, agrees not to attempt to identify the information contained in the Data Set. 
+
+    **Return or Destruction:** Data Recipient will indemnify, defend and hold harmless the University’s and any University affiliates’ trustees, officers, directors, employees and agents from and against any claim, cause of action, liability, damage, cost or expense
+    (including without limitation, reasonable attorney’s fees and court costs) arising out of or in connection with any unauthorized or prohibited Use or Disclosure of the Data Set or any other breach of this Agreement by Data Recipient or any subcontractor, agent 
+    or person under Data Recipient’s control. 
